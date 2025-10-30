@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Consulta - Ministério dos Direitos Humanos e da Cidadania</title>
+
+  <!-- GOV.BR Design System -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/fonts/rawline/rawline.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/core/dist/core.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="styles/custom.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="br-header">
+    <div class="container-lg">
+      <div class="header-top">
+        <div class="header-logo">
+          <img
+            src="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/atendimento-gov.br/imagens/gov-br_logo-svg.png/@@images/image"
+            alt="Governo Federal" />
+          <span class="br-divider vertical"></span>
+          <div class="header-sign">Governo Federal</div>
+        </div>
+        <div class="header-actions">
+          <div class="header-links dropdown">
+            <button class="br-button circle small" type="button" data-toggle="dropdown" aria-label="Acesso Rápido">
+              <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+            </button>
+            <div class="br-list">
+              <div class="header">
+                <div class="title">Acesso Rápido</div>
+              </div>
+              <a class="br-item" href="#"><i class="fas fa-home"></i>Página Inicial</a>
+              <a class="br-item" href="#"><i class="fas fa-question-circle"></i>Ajuda</a>
+              <a class="br-item" href="#"><i class="fas fa-envelope"></i>Contato</a>
+            </div>
+          </div>
+          <div class="header-login">
+            <button class="br-sign-in small" type="button">
+              <i class="fas fa-user" aria-hidden="true"></i>
+              <span class="d-none d-sm-inline">Entrar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="header-menu">
+          <div class="header-info">
+            <div class="header-title">Ministério dos Direitos Humanos e da Cidadania</div>
+            <div class="header-subtitle">Sistema de Consulta de Requerimentos do BINHA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container-lg">
+    <!-- Breadcrumb -->
+    <!-- Breadcrumb COM SETAS -->
+    <nav class="br-breadcrumb">
+      <div class="container-lg">
+        <ul class="crumb">
+          <li class="crumb-home">
+            <a href="#">
+              <i class="fas fa-home"></i>
+              <span>Início</span>
+            </a>
+          </li>
+          <li class="crumb-item">
+            <a href="#">Consulta</a>
+          </li>
+          <li class="crumb-item" aria-current="page">
+            <span>Requerimentos</span>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="br-page-header">
+      <div class="container-lg">
+        <div class="content">
+          <div class="row align-items-end">
+            <div class="col">
+              <h1>Consulta de Requerimentos</h1>
+              <p class="text-up-01 text-medium pb-3">Sistema de consulta de requerimentos do BINHA</p>
+            </div>
+            <div class="col col-auto">
+              <button class="br-button primary" type="button">
+                <i class="fas fa-plus"></i>
+                Novo Requerimento
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="br-card">
+      <div class="card-header">
+        <h2 class="card-title">Filtros de Pesquisa</h2>
+      </div>
+      <div class="card-content">
+        <form class="br-form">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="br-input">
+                <label for="cpf">CPF</label>
+                <input id="cpf" type="text" placeholder="000.000.000-00" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="br-input">
+                <label for="numero-sei">Número SEI</label>
+                <input id="numero-sei" type="text" placeholder="00000.000000/0000-00" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="br-input">
+                <label for="situacao">Situação</label>
+                <select id="situacao">
+                  <option value="">Todas</option>
+                  <option value="analise">Em análise</option>
+                  <option value="deferido">Deferido</option>
+                  <option value="indeferido">Indeferido</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- Resto do formulário permanece igual -->
+        </form>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="br-card mt-3">
+      <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="card-title">Resultados da Consulta</h2>
+          <span class="br-tag">15 requerimentos encontrados</span>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="br-table">
+          <div class="table-header">
+            <div class="top-bar">
+              <div class="table-title">Lista de Requerimentos</div>
+              <div class="actions">
+                <button class="br-button circle" type="button" aria-label="Exportar">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="br-button circle" type="button" aria-label="Imprimir">
+                  <i class="fas fa-print"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="table-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>CPF</th>
+                  <th>Número SEI</th>
+                  <th>Data de Protocolo</th>
+                  <th>Relator</th>
+                  <th>Situação</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>000.000.000-00</td>
+                  <td>01234.567890/2024-00</td>
+                  <td>01/10/2024</td>
+                  <td>Maria Silva</td>
+                  <td><span class="br-tag success">Deferido</span></td>
+                  <td>
+                    <button class="br-button circle small" type="button" aria-label="Visualizar">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="br-button circle small" type="button" aria-label="Editar">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>111.111.111-11</td>
+                  <td>05678.901234/2024-01</td>
+                  <td>15/09/2024</td>
+                  <td>João Santos</td>
+                  <td><span class="br-tag warning">Em análise</span></td>
+                  <td>
+                    <button class="br-button circle small" type="button" aria-label="Visualizar">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="br-button circle small" type="button" aria-label="Editar">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>222.222.222-22</td>
+                  <td>09876.543210/2023-99</td>
+                  <td>20/08/2024</td>
+                  <td>Ana Oliveira</td>
+                  <td><span class="br-tag danger">Indeferido</span></td>
+                  <td>
+                    <button class="br-button circle small" type="button" aria-label="Visualizar">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="br-button circle small" type="button" aria-label="Editar">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="br-footer">
+      <div class="container-lg">
+        <div class="logo">
+          <img src="https://www.gov.br/++theme++padrao_govbr/img/govbr.png" alt="Logo do GOV.BR" />
+        </div>
+        <div class="row">
+          <div class="col social-network">
+            <div class="social-network-title">Redes Sociais</div>
+            <div class="social-network-list">
+              <a class="br-button circle" href="https://www.facebook.com/direitoshumanosbrasil" target="_blank"
+                aria-label="Facebook">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a class="br-button circle" href="https://twitter.com/mdhbrasil" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a class="br-button circle" href="https://www.instagram.com/mdhbrasil" target="_blank"
+                aria-label="Instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col">
+            <span class="text"><strong>Ministério dos Direitos Humanos e da Cidadania</strong><br>Sistema de Consulta de
+              Requerimentos</span>
+          </div>
+        </div>
+        <div class="br-divider"></div>
+        <div class="container-lg">
+          <div class="info">
+            <div class="text-down-01 text-medium pb-3">
+              Todo o conteúdo deste site está publicado sob a licença Creative Commons Atribuição-SemDerivações 3.0 Não
+              Adaptada.
+            </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+              <div class="text-down-01 text-medium py-1">
+                <i class="fas fa-balance-scale" aria-hidden="true"></i>
+                Exceto onde afirmado em contrário, o conteúdo deste site está licenciado sob a Licença Creative Commons
+                Atribuição 3.0 Brasil.
+              </div>
+              <div class="text-down-01 text-medium py-1">
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                <a class="br-link" href="https://www.gov.br/governodigital/pt-br/politica-de-privacidade"
+                  target="_blank">Política de Privacidade</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@govbr-ds/core/dist/core.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

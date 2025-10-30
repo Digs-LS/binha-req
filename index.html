@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Consulta de Requerimentos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/fonts/rawline/rawline.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/core/dist/core.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        table.br-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.br-table th,
+        table.br-table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .br-tag.success {
+            background-color: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .br-tag.warning {
+            background-color: #ffc107;
+            color: black;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .br-tag.danger {
+            background-color: #dc3545;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        label.br-input {
+            display: block;
+            margin-bottom: 15px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="br-header" role="banner">
+        <div class="container-lg">
+            <div class="header-top">
+                <div class="header-logo">
+                    <img src="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/atendimento-gov.br/imagens/gov-br_logo-svg.png/@@images/image"
+                        alt="Governo Federal" />
+                    <span class="br-divider vertical"></span>
+                    <div class="header-sign">Governo Federal</div>
+                </div>
+                <div class="header-actions">
+                    <div class="header-links dropdown">
+                        <button class="br-button circle small" type="button" data-toggle="dropdown"
+                            aria-label="Abrir Acesso Rápido">
+                            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                        </button>
+                        <div class="br-list" aria-label="Lista de links">
+                            <div class="header">
+                                <div class="title">Acesso Rápido</div>
+                            </div>
+                            <a class="br-item" href="#">Página Inicial</a>
+                            <a class="br-item" href="#">Ajuda</a>
+                            <a class="br-item" href="#">Contato</a>
+                        </div>
+                    </div>
+                    <div class="header-login">
+                        <button class="br-sign-in small" type="button">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span class="d-none d-sm-inline">Entrar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="header-menu">
+                    <div class="header-info">
+                        <div class="header-title">Ministério dos Direitos Humanos e da Cidadania</div>
+                        <div class="header-subtitle">Sistema de Consulta de Requerimentos do BINHA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <h1>Consulta de Requerimentos</h1>
+    <label class="br-input">
+        <span class="br-input__label" for="filterRelator">Filtrar por Relator</span>
+        <select id="filterRelator" class="br-input__control">
+            <option value="">Todos</option>
+        </select>
+    </label>
+
+    <label for="filterRelator">Filtrar por Relator:</label>
+    <button id="btnFilterRelator">Selecione o Relator</button>
+    <div id="dropdownRelator"
+        style="display:none; border:1px solid #ccc; max-height:150px; overflow-y:auto; position:absolute; background:white;">
+        <!-- itens do dropdown serão adicionados dinamicamente -->
+    </div>
+
+    <table class="br-table">
+        <thead>
+            <tr>
+                <th>CPF</th>
+                <th>Número SEI</th>
+                <th>Data de Protocolo</th>
+                <th>Relator</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+
+        // Ao carregar a página, buscar dados no backend e preencher a tabela
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('consulta-requerimentos.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('tbody');
+                    tbody.innerHTML = '';
+                    console.log(data);
+                    data.forEach(item => {
+                        let tagClass = '';
+                        switch ((item.situacao || '').toLowerCase()) {
+                            case 'deferido': tagClass = 'success'; break;
+                            case 'em análise': tagClass = 'warning'; break;
+                            case 'indeferido': tagClass = 'danger'; break;
+                        }
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+              <td>${item.cpf || ''}</td>
+              <td>${item.processo_sei || ''}</td>
+              <td>${item.data_protocolo || ''}</td>
+              <td>${item.relator || ''}</td>
+              <td><span class="br-tag ${tagClass}">${item.situacao || ''}</span></td>
+            `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(console.error);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('btnFilterRelator');
+            const dropdown = document.getElementById('dropdownRelator');
+
+            // Pegar todos os nomes únicos de relatores da tabela (após carregamento da tabela)
+            function getUniqueRelators() {
+                const cells = document.querySelectorAll('tbody tr td:nth-child(4)');
+                const nomes = [...new Set(Array.from(cells).map(c => c.textContent.trim()))];
+                return nomes;
+            }
+
+            // Exibe o dropdown populado dos relatores
+            function showDropdown() {
+                dropdown.innerHTML = '';
+                const relators = getUniqueRelators();
+                relators.forEach(nome => {
+                    const item = document.createElement('div');
+                    item.textContent = nome;
+                    item.style.padding = '4px 8px';
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', () => {
+                        btn.textContent = nome;
+                        filterTableByRelator(nome);
+                        dropdown.style.display = 'none';
+                    });
+                    dropdown.appendChild(item);
+                });
+                dropdown.style.display = 'block';
+            }
+
+            // Filtrar tabela pelas linhas que possuem o nome do relator passado
+            function filterTableByRelator(nome) {
+                const rows = document.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const relatorCell = row.cells[3].textContent.trim();
+                    row.style.display = (nome === '' || relatorCell === nome) ? '' : 'none';
+                });
+            }
+
+            btn.addEventListener('click', () => {
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                } else {
+                    showDropdown();
+                }
+            });
+
+            // Opcional: clique fora fecha o dropdown
+            document.addEventListener('click', (event) => {
+                if (!dropdown.contains(event.target) && event.target !== btn) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

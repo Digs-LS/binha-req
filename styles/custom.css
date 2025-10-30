@@ -1,0 +1,67 @@
+/* Breadcrumb Corrections - COM SETAS */
+.br-breadcrumb {
+    background-color: transparent;
+    padding: 1rem 0;
+    margin: 0 -1.5rem 1rem -1.5rem;
+}
+
+.br-breadcrumb .container-lg {
+    padding: 0 1.5rem;
+}
+
+.crumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.crumb-item, .crumb-home {
+    display: flex;
+    align-items: center;
+}
+
+.crumb-home a {
+    color: #1351b4;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+}
+
+.crumb-item a {
+    color: #1351b4;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.crumb-item span {
+    color: #495057;
+    padding: 0.5rem;
+}
+
+.crumb-item[aria-current="page"] span {
+    font-weight: 600;
+    color: #1351b4;
+}
+
+/* SEPARADOR COM SETA (chevron) */
+.crumb-item:not(:last-child)::after {
+    content: "›"; /* Ou use ">" */
+    color: #6c757d;
+    margin: 0 0.25rem;
+    font-size: 1.125rem;
+    font-weight: normal;
+}
+
+/* Alternativa com ícone Font Awesome */
+.crumb-item:not(:last-child)::after {
+    content: "\f054"; /* Código do ícone chevron-right */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin: 0 0.5rem;
+}
