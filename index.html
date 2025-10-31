@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Consulta de Requerimentos</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/fonts/rawline/rawline.css" />
+    <link href="https://fonts.cdnfonts.com/css/rawline" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/core/dist/core.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
@@ -91,123 +91,619 @@
             </div>
         </div>
     </header>
+    <main class="main">
+        <div class="container-fluid">
+            <div class="pt-4 pb-5 col">
+                <div class="main-content">
+                    <h1>Consulta de Requerimentos</h1>
+                    <div class="br-table" data-search="data-search" data-selection="data-selection"
+                        data-collapse="data-collapse" data-random="data-random">
+                        <div class="table-header">
+                            <div class="top-bar">
+                                <div class="table-title">Requerimentos</div>
+
+                                <!--
+                                <span class="feedback warning" role="alert"><i class="fas fa-exclamation-triangle"
+                                        aria-hidden="true"></i>Texto auxiliar Função de prevenir erros.</span>
+                                -->
 
 
-    <h1>Consulta de Requerimentos</h1>
-    <label class="br-input">
-        <span class="br-input__label" for="filterRelator">Filtrar por Relator</span>
-        <select id="filterRelator" class="br-input__control">
-            <option value="">Todos</option>
-        </select>
-    </label>
+                                <div class="actions-trigger text-nowrap">
+                                    <button class="br-button circle" type="button" id="button-dropdown-density"
+                                        title="Ver mais opções" data-toggle="dropdown" data-target="target01-49447"
+                                        aria-label="Definir densidade da tabela" aria-haspopup="true"
+                                        aria-live="polite"><i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="br-list" id="target01-49447" role="menu"
+                                        aria-labelledby="button-dropdown-density" hidden="hidden">
+                                        <button class="br-item" type="button" data-density="small"
+                                            role="menuitem">Densidade
+                                            alta
+                                        </button><span class="br-divider"></span>
+                                        <button class="br-item" type="button" data-density="medium"
+                                            role="menuitem">Densidade
+                                            média
+                                        </button><span class="br-divider"></span>
+                                        <button class="br-item" type="button" data-density="large"
+                                            role="menuitem">Densidade
+                                            baixa
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="search-trigger">
+                                    <button class="br-button circle" type="button" id="button-input-search"
+                                        data-toggle="search" aria-label="Abrir busca"
+                                        aria-controls="table-searchbox-49447"><i class="fas fa-search"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="br-select">
+                                    <div class="br-input">
+                                        <input id="select-simple" type="text" placeholder="Selecione o Relator" />
+                                        <button id="btnFilterRelator" class="br-button" type="button"
+                                            aria-label="Exibir lista" tabindex="-1" data-trigger="data-trigger">
+                                            <i class="fas fa-angle-down" aria-hidden="true"></i> </button>
+                                        <div id="dropdownRelator"
+                                            style="display:none; border:1px solid #ccc; max-height:150px; overflow-y:auto; position:absolute; background:white;">
+                                            <!-- itens do dropdown serão adicionados dinamicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-bar">
+                                <div class="br-input">
+                                    <label for="table-searchbox-49447">Buscar na tabela</label>
+                                    <input id="table-searchbox-49447" type="search" placeholder="Buscar na tabela"
+                                        aria-labelledby="button-input-search" aria-label="Buscar na tabela" />
+                                    <button class="br-button" type="button" aria-label="Buscar"><i class="fas fa-search"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <button class="br-button circle" type="button" data-dismiss="search"
+                                    aria-label="Fechar busca"><i class="fas fa-times" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <div class="selected-bar">
+                                <div class="info"><span class="count">0</span><span class="text">item selecionado</span>
+                                </div>
+                                <div class="actions-trigger text-nowrap">
+                                    <button class="br-button circle inverted" type="button"
+                                        id="button-dropdown-selection" data-toggle="dropdown"
+                                        data-target="target02-49447" aria-controls="target02-49447"
+                                        aria-label="Ver mais opções de ação" aria-haspopup="true"><i
+                                            class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                                    </button>
+                                    <div class="br-list" id="target02-49447" role="menu"
+                                        aria-labelledby="button-dropdown-selection" hidden="hidden">
+                                        <button class="br-item" type="button" data-toggle="" role="menuitem">Ação 1
+                                        </button><span class="br-divider"></span>
+                                        <button class="br-item" type="button" role="menuitem">Ação 2
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <caption>Título da Tabela</caption>
+                            <thead>
+                                <tr>
+                                    <!--
+                    <th class="column-checkbox" scope="col">
+                        <div class="br-checkbox hidden-label">
+                            <input id="check-all-49447" name="check-all-49447" type="checkbox"
+                                aria-label="Selecionar tudo" data-parent="check-01-49447" />
+                            <label for="check-all-49447">Selecionar todas as linhas</label>
+                        </div>
+                    </th>
+                    -->
 
-    <label for="filterRelator">Filtrar por Relator:</label>
-    <button id="btnFilterRelator">Selecione o Relator</button>
-    <div id="dropdownRelator"
-        style="display:none; border:1px solid #ccc; max-height:150px; overflow-y:auto; position:absolute; background:white;">
-        <!-- itens do dropdown serão adicionados dinamicamente -->
-    </div>
+                                    <th>CPF</th>
+                                    <th>Número SEI</th>
+                                    <th>Data de Protocolo</th>
+                                    <th>Relator</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Linhas da tabela serão preenchidas dinamicamente via JavaScript -->
 
-    <table class="br-table">
-        <thead>
-            <tr>
-                <th>CPF</th>
-                <th>Número SEI</th>
-                <th>Data de Protocolo</th>
-                <th>Relator</th>
-                <th>Situação</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+                            </tbody>
+                        </table>
+                        <div class="table-footer">
+                            <nav class="br-pagination" aria-label="paginação" data-total="50" data-current="1"
+                                data-per-page="20">
+                                <div class="pagination-per-page">
+                                    <div class="br-select">
+                                        <div class="br-input">
+                                            <label for="per-page-selection-random-58720">Exibir</label>
+                                            <input id="per-page-selection-random-58720" type="text" placeholder=" " />
+                                            <button class="br-button" type="button" aria-label="Exibir lista"
+                                                tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down"
+                                                    aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="br-list" tabindex="0">
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="per-page-10-random-58720" type="radio"
+                                                        name="per-page-random-58720" value="per-page-10-random-58720"
+                                                        checked="checked" />
+                                                    <label for="per-page-10-random-58720">10</label>
+                                                </div>
+                                            </div>
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="per-page-20-random-58720" type="radio"
+                                                        name="per-page-random-58720" value="per-page-20-random-58720" />
+                                                    <label for="per-page-20-random-58720">20</label>
+                                                </div>
+                                            </div>
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="per-page-30-random-58720" type="radio"
+                                                        name="per-page-random-58720" value="per-page-30-random-58720" />
+                                                    <label for="per-page-30-random-58720">30</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><span class="br-divider d-none d-sm-block mx-3"></span>
+                                <div class="pagination-information d-none d-sm-flex"><span
+                                        class="current">1</span>&ndash;<span
+                                        class="per-page">20</span>&nbsp;de&nbsp;<span class="total">50</span>&nbsp;itens
+                                </div>
+                                <div class="pagination-go-to-page d-none d-sm-flex ml-auto">
+                                    <div class="br-select">
+                                        <div class="br-input">
+                                            <label for="go-to-selection-random-44623">Página</label>
+                                            <input id="go-to-selection-random-44623" type="text" placeholder=" " />
+                                            <button class="br-button" type="button" aria-label="Exibir lista"
+                                                tabindex="-1" data-trigger="data-trigger"><i class="fas fa-angle-down"
+                                                    aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <div class="br-list" tabindex="0">
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="go-to-1-random-44623" type="radio"
+                                                        name="go-to-random-44623" value="go-to-1-random-44623"
+                                                        checked="checked" />
+                                                    <label for="go-to-1-random-44623">1</label>
+                                                </div>
+                                            </div>
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="go-to-2-random-44623" type="radio"
+                                                        name="go-to-random-44623" value="go-to-2-random-44623" />
+                                                    <label for="go-to-2-random-44623">2</label>
+                                                </div>
+                                            </div>
+                                            <div class="br-item" tabindex="-1">
+                                                <div class="br-radio">
+                                                    <input id="go-to-3-random-44623" type="radio"
+                                                        name="go-to-random-44623" value="go-to-3-random-44623" />
+                                                    <label for="go-to-3-random-44623">3</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><span class="br-divider d-none d-sm-block mx-3"></span>
+                                <div class="pagination-arrows ml-auto ml-sm-0">
+                                    <button class="br-button circle" type="button" aria-label="Voltar página"><i
+                                            class="fas fa-angle-left" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="br-button circle" type="button" aria-label="Página seguinte"><i
+                                            class="fas fa-angle-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="br-footer">
+        <div class="container-lg">
+            <div class="logo"><img
+                    src="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/images/logo-negative.png"
+                    alt="Imagem" /></div>
+            <div class="br-list horizontal" data-toggle="data-toggle" data-sub="data-sub">
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 1</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Nulla occaecat eiusmod</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Ex qui laborum consectetur aute commodo</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Deserunt</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 2</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Adipisicing culpa et ad consequat</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Adipisicing culpa et ad consequat</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Adipisicing culpa et ad consequat</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 3</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Duis incididunt consectetur</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Deserunt</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 4</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Nulla occaecat eiusmod</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Qui esse</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 5</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+                <div class="col-2"><a class="br-item header" href="javascript:void(0)">
+                        <div class="content text-down-01 text-bold text-uppercase">Categoria 6</div>
+                        <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                    <div class="br-list"><span class="br-divider d-md-none"></span><a class="br-item"
+                            href="javascript:void(0)">
+                            <div class="content">Duis incididunt consectetur</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Est ex deserunt</div>
+                        </a><a class="br-item" href="javascript:void(0)">
+                            <div class="content">Duis incididunt consectetur</div>
+                        </a><span class="br-divider d-md-none"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none d-sm-block">
+                <div class="row align-items-end justify-content-between py-5">
+                    <div class="col">
+                        <div class="social-network">
+                            <div class="social-network-title">Redes Sociais</div>
+                            <div class="d-flex"><a class="br-button circle" href="javascript: void(0)"
+                                    aria-label="Compartilhar por Facebook"><i class="fab fa-facebook-f"
+                                        aria-hidden="true"></i></a><a class="br-button circle"
+                                    href="javascript: void(0)" aria-label="Compartilhar por Twitter"><i
+                                        class="fab fa-twitter" aria-hidden="true"></i></a><a class="br-button circle"
+                                    href="javascript: void(0)" aria-label="Compartilhar por Linkedin"><i
+                                        class="fab fa-linkedin-in" aria-hidden="true"></i></a><a
+                                    class="br-button circle" href="javascript: void(0)"
+                                    aria-label="Compartilhar por Whatsapp"><i class="fab fa-whatsapp"
+                                        aria-hidden="true"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col assigns text-right"><img class="ml-4"
+                            src="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png"
+                            alt="Imagem" /><img class="ml-4"
+                            src="https://cdngovbr-ds.estaleiro.serpro.gov.br/design-system/images/logo-assign-negative.png"
+                            alt="Imagem" />
+                    </div>
+                </div>
+            </div>
+        </div><span class="br-divider my-3"></span>
+        <div class="container-lg">
+            <div class="info">
+                <div class="text-down-01 text-medium pb-3">Texto destinado a exibição de informações relacionadas
+                    à&nbsp;<strong>licença de uso.</strong></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@govbr-ds/core/dist/core.min.js"></script>
 
     <script>
-
-        // Ao carregar a página, buscar dados no backend e preencher a tabela
+        /*
+          Uso:
+            // passar array de objetos (vindo do backend)
+            window.loadRequerimentos(dataArray);
+        
+            // ou passar referência à tabela/ tbody existente
+            window.loadRequerimentos(document.querySelector('table.br-table')); 
+        */
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('consulta-requerimentos.php')
-                .then(response => response.json())
-                .then(data => {
-                    const tbody = document.querySelector('tbody');
-                    tbody.innerHTML = '';
-                    console.log(data);
-                    data.forEach(item => {
-                        let tagClass = '';
-                        switch ((item.situacao || '').toLowerCase()) {
-                            case 'deferido': tagClass = 'success'; break;
-                            case 'em análise': tagClass = 'warning'; break;
-                            case 'indeferido': tagClass = 'danger'; break;
-                        }
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-              <td>${item.cpf || ''}</td>
-              <td>${item.processo_sei || ''}</td>
-              <td>${item.data_protocolo || ''}</td>
-              <td>${item.relator || ''}</td>
-              <td><span class="br-tag ${tagClass}">${item.situacao || ''}</span></td>
-            `;
-                        tbody.appendChild(tr);
-                    });
-                })
-                .catch(console.error);
+            // chama sem argumento: o loadRequerimentos fará fetch('consulta-requerimentos.php') internamente
+            if (window.loadRequerimentos) window.loadRequerimentos();
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('btnFilterRelator');
-            const dropdown = document.getElementById('dropdownRelator');
+        (function () {
+            const tbody = () => document.querySelector('tbody');
+            const btn = () => document.getElementById('btnFilterRelator');
+            const input = () => document.getElementById('select-simple');
+            const dropdown = () => document.getElementById('dropdownRelator');
 
-            // Pegar todos os nomes únicos de relatores da tabela (após carregamento da tabela)
-            function getUniqueRelators() {
-                const cells = document.querySelectorAll('tbody tr td:nth-child(4)');
-                const nomes = [...new Set(Array.from(cells).map(c => c.textContent.trim()))];
-                return nomes;
+            let relatorsList = [];
+
+            function createTagClass(situacao) {
+                let tagClass = '';
+                switch ((situacao || '').toLowerCase()) {
+                    case 'deferido': tagClass = 'success'; break;
+                    case 'em análise': tagClass = 'warning'; break;
+                    case 'indeferido': tagClass = 'danger'; break;
+                }
+                return tagClass;
             }
 
-            // Exibe o dropdown populado dos relatores
-            function showDropdown() {
-                dropdown.innerHTML = '';
-                const relators = getUniqueRelators();
-                relators.forEach(nome => {
-                    const item = document.createElement('div');
-                    item.textContent = nome;
-                    item.style.padding = '4px 8px';
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', () => {
-                        btn.textContent = nome;
-                        filterTableByRelator(nome);
-                        dropdown.style.display = 'none';
-                    });
-                    dropdown.appendChild(item);
-                });
-                dropdown.style.display = 'block';
-            }
 
-            // Filtrar tabela pelas linhas que possuem o nome do relator passado
             function filterTableByRelator(nome) {
-                const rows = document.querySelectorAll('tbody tr');
+                const t = tbody();
+                if (!t) return;
+                const rows = t.querySelectorAll('tr');
                 rows.forEach(row => {
-                    const relatorCell = row.cells[3].textContent.trim();
-                    row.style.display = (nome === '' || relatorCell === nome) ? '' : 'none';
+                    const relatorCell = (row.cells[3] && row.cells[3].textContent || '').trim();
+                    row.style.display = (!nome || nome === 'Todos' || relatorCell === nome) ? '' : 'none';
                 });
             }
 
-            btn.addEventListener('click', () => {
-                if (dropdown.style.display === 'block') {
-                    dropdown.style.display = 'none';
+            function renderDropdownItems(filter = '') {
+                const dd = dropdown();
+                if (!dd) return;
+                dd.innerHTML = '';
+                const q = (filter || '').toLowerCase();
+
+                const pushItem = (text, isHeader = false) => {
+                    const item = document.createElement('div');
+                    item.className = 'br-item';
+                    item.textContent = text;
+                    item.style.padding = '6px 8px';
+                    item.style.cursor = 'pointer';
+                    if (isHeader) item.style.fontWeight = '600';
+                    item.addEventListener('click', () => {
+                        const inp = input();
+                        if (inp) inp.value = text === 'Todos' ? '' : text;
+                        filterTableByRelator(text === 'Todos' ? '' : text);
+                        dd.style.display = 'none';
+                    });
+                    dd.appendChild(item);
+                };
+
+                // Item "Todos"
+                pushItem('Todos', true);
+
+                const divider = document.createElement('div');
+                divider.className = 'br-divider';
+                divider.style.margin = '4px 0';
+                dd.appendChild(divider);
+
+                // Itens filtrados
+                const matches = relatorsList.filter(r => q === '' || r.toLowerCase().includes(q));
+                matches.forEach(r => pushItem(r));
+
+                if (matches.length === 0) {
+                    const none = document.createElement('div');
+                    none.className = 'br-item';
+                    none.textContent = 'Nenhum relator encontrado';
+                    none.style.padding = '6px 8px';
+                    none.style.color = '#666';
+                    none.style.cursor = 'default';
+                    dd.appendChild(none);
+                }
+
+                // mostrar dropdown (mas não altera relatorsList aqui)
+                dd.style.display = 'block';
+            }
+
+            function populateFromArray(dataArray) {
+                const t = tbody();
+                if (!t) return;
+                t.innerHTML = '';
+                const set = new Set();
+                dataArray.forEach(item => {
+                    const tr = document.createElement('tr');
+                    const tagClass = createTagClass(item.situacao);
+                    tr.innerHTML = `
+                        <td>${item.cpf || ''}</td>
+                        <td>${item.processo_sei || ''}</td>
+                        <td>${item.data_protocolo || ''}</td>
+                        <td>${item.relator || ''}</td>
+                        <td><span class="br-tag ${tagClass}">${item.situacao || ''}</span></td>
+                    `;
+                    t.appendChild(tr);
+                    if (item.relator && item.relator.toString().trim() !== '') {
+                        set.add(item.relator.toString().trim());
+                    }
+                });
+
+                relatorsList = Array.from(set).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+                renderDropdownItems(''); // prepara itens (não força abrir)
+
+                // inicializa GOV.BR/BRTable depois de popular
+                if (window.core && typeof core.init === 'function') core.init();
+                if (window.core && core.BRTable) {
+                    document.querySelectorAll('.br-table').forEach((el, idx) => {
+                        try { new core.BRTable('br-table', el, idx); } catch (e) { /* ignore */ }
+                    });
+                }
+            }
+
+            function populateFromTable(tableOrTbody) {
+                let rows = [];
+                if (!tableOrTbody) return;
+                if (tableOrTbody.tagName.toLowerCase() === 'table') {
+                    rows = Array.from(tableOrTbody.querySelectorAll('tbody tr'));
+                } else if (tableOrTbody.tagName.toLowerCase() === 'tbody') {
+                    rows = Array.from(tableOrTbody.querySelectorAll('tr'));
                 } else {
-                    showDropdown();
+                    return;
+                }
+
+                const set = new Set();
+                rows.forEach(row => {
+                    const rel = (row.cells[3] && row.cells[3].textContent || '').trim();
+                    if (rel) set.add(rel);
+                });
+
+                relatorsList = Array.from(set).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+                renderDropdownItems('');
+
+                // inicializa GOV.BR/BRTable (caso necessário)
+                if (window.core && typeof core.init === 'function') core.init();
+                if (window.core && core.BRTable) {
+                    document.querySelectorAll('.br-table').forEach((el, idx) => {
+                        try { new core.BRTable('br-table', el, idx); } catch (e) { /* ignore */ }
+                    });
+                }
+            }
+
+            // ligar comportamentos do seletor (botão, input e fechamento ao clicar fora)
+            function attachControls() {
+                const b = btn();
+                const inp = input();
+                const dd = dropdown();
+                const t = tbody();
+                if (!b || !inp || !dd || !t) {
+                    console.warn('attachControls: elementos ausentes (btn/select/dropdown/tbody).');
+                    return;
+                }
+
+                // toggle pelo botão
+                b.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const currentFilter = (inp.value || '').trim();
+                    if (dd.style.display === 'block') dd.style.display = 'none';
+                    else {
+                        renderDropdownItems(currentFilter);
+                        dd.style.display = 'block';
+                    }
+                });
+
+                // abre ao focar o input (mostra todas as opções quando vazio)
+                inp.addEventListener('focus', () => {
+                    renderDropdownItems((inp.value || '').trim());
+                    dd.style.display = 'block';
+                });
+
+                // filtrar enquanto digita
+                inp.addEventListener('input', () => {
+                    renderDropdownItems((inp.value || '').trim());
+                });
+
+                // Enter aplica filtro na tabela; Escape fecha
+                inp.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        const val = (inp.value || '').trim();
+                        filterTableByRelator(val);
+                        dd.style.display = 'none';
+                        inp.blur();
+                    } else if (e.key === 'Escape') {
+                        dd.style.display = 'none';
+                        inp.blur();
+                    }
+                });
+
+                // fechar ao clicar fora
+                document.addEventListener('click', (event) => {
+                    if (!dd.contains(event.target) && event.target !== b && event.target !== inp) {
+                        dd.style.display = 'none';
+                    }
+                });
+            }
+
+            // função pública: recebe array de objetos OU elemento table/tbody
+            window.loadRequerimentos = function (dataOrTable) {
+                // aguarda DOM pronto se necessário
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => window.loadRequerimentos(dataOrTable));
+                    return;
+                }
+
+                attachControls();
+
+                if (!dataOrTable) {
+                    // sem argumento: tenta buscar do backend (compatibilidade)
+                    fetch('consulta-requerimentos.php')
+                        .then(r => r.json())
+                        .then(json => {
+                            if (Array.isArray(json)) populateFromArray(json);
+                        })
+                        .catch(() => { /* falha silenciosa */ });
+                    return;
+                }
+
+                if (Array.isArray(dataOrTable)) {
+                    populateFromArray(dataOrTable);
+                    return;
+                }
+
+                // aceitar elemento DOM (table ou tbody) ou seletor
+                if (typeof dataOrTable === 'string') {
+                    const el = document.querySelector(dataOrTable);
+                    if (!el) return;
+                    populateFromTable(el);
+                    return;
+                }
+
+                if (dataOrTable instanceof HTMLElement) {
+                    populateFromTable(dataOrTable);
+                    return;
+                }
+            };
+
+            // tentativa de inicialização automática se já houver dados renderizados na página
+            document.addEventListener('DOMContentLoaded', () => {
+                // se tbody já tem linhas, usa elas para montar seletor
+                const t = document.querySelector('table.br-table');
+                if (t && t.querySelectorAll('tbody tr').length > 0) {
+                    window.loadRequerimentos(t);
                 }
             });
 
-            // Opcional: clique fora fecha o dropdown
-            document.addEventListener('click', (event) => {
-                if (!dropdown.contains(event.target) && event.target !== btn) {
-                    dropdown.style.display = 'none';
-                }
+            // opcional: expor lista para debug
+            Object.defineProperty(window, '_relatorsList', {
+                configurable: true,
+                enumerable: false,
+                get: () => relatorsList
             });
-        });
 
+        })();
     </script>
+
 </body>
 
 </html>
