@@ -3,11 +3,26 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 header('Content-Type: application/json; charset=utf-8');
+// Carregar variáveis de ambiente (em dev, use vlucas/phpdotenv; em produção, a PaaS injeta as variáveis)
+$host = getenv('DB_HOST') ?: ($_ENV['DB_HOST'] ?? 'localhost');
+$port = getenv('DB_PORT') ?: ($_ENV['DB_PORT'] ?? '5432');
+$dbname = getenv('DB_DATABASE') ?: ($_ENV['DB_DATABASE'] ?? 'app');
+$user = getenv('DB_USERNAME') ?: ($_ENV['DB_USERNAME'] ?? 'user');
+$password = getenv('DB_PASSWORD') ?: ($_ENV['DB_PASSWORD'] ?? '');
 
-$host = 'localhost';
-$dbname = 'postgres';      // ajuste para seu banco
-$user = 'postgres';      // ajuste para seu usuário
-$password = 'root';    // ajuste para sua senha
+// Conectar com PDO
+$dsn = "pgsql:host={$host};port={$port};dbname={$dbname};";
+try {
+    $pdo = new PDO($dsn, $user, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ]);
+} catch (PDOException $e) {
+    error_log('DB connection failed: ' . $e->getMessage());
+    http_response_code(500);
+    echo 'Erro interno.';
+    exit;
+}
 
 try {
     $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
